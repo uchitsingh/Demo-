@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:fillViewport="true"
+    tools:context=".Home">
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codepath.greenhouse.Home"
+    android:background="@android:color/black">
+
+    <Button
+        android:id="@+id/accountButton"
+        android:onClick="createAccount"
+        android:layout_width="301dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/gradient_button_background2x"
+        android:text="Create an account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+
+    <TextView
+        android:id="@+id/greenFlagTextView"
+        android:layout_width="205dp"
+        android:layout_height="45dp"
+       android:layout_marginTop="100dp"
+        android:text="GreenFlag customers can create an account to access"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backgroundImageView" />
+
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="151dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_green_flag2x" />
+
+    <TextView
+        android:id="@+id/carHealthTextView"
+        android:layout_width="178dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Car health updates"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greenFlagTextView" />
+
+    <ImageView
+        android:id="@+id/carHealthImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/carHealthTextView"
+        app:layout_constraintTop_toTopOf="@+id/carHealthTextView"
+        app:srcCompat="@drawable/tick2x" />
+
+    <TextView
+        android:id="@+id/rescueOnlineTextView"
+        android:layout_width="178dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/museosans_300"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Request a recscue Online"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carHealthTextView" />
+
+    <TextView
+        android:id="@+id/policyTextView"
+        android:layout_width="178dp"
+        android:layout_height="226dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/museosans_300"
+        android:text="Policy Information"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rescueOnlineTextView" />
+
+    <ImageView
+        android:id="@+id/policyImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/policyTextView"
+        app:layout_constraintTop_toTopOf="@+id/policyTextView"
+        app:srcCompat="@drawable/tick2x" />
+
+    <ImageView
+        android:id="@+id/rescueOnlineImageView"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/rescueOnlineTextView"
+        app:layout_constraintTop_toBottomOf="@+id/carHealthTextView"
+        app:srcCompat="@drawable/tick2x" />
+
+
+</android.support.constraint.ConstraintLayout>
+</ScrollView>
