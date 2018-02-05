@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -79,13 +80,13 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         init();
         initRealm();
 
+        String mUserName = getIntent().getExtras().getString("KEY_USER");
 
-
-
-
-
+ //       String mUserName = getIntent().getParcelableExtra("KEY_USER");
+//        Log.i("mUserName", mUserName);
+        eTUserName.setText(mUserName);
+       // getUserName();
         realmBackupRestore = new RealmBackupRestore(this);
-
     }
 
     /*
@@ -220,14 +221,19 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         etAge = (EditText) findViewById(R.id.etAge);
         postCodeEditText= (EditText) findViewById(R.id.postCodeEditText);
         //genderTextView = (TextView) findViewById(R.id.genderTextView);
+
+
+
         saveButton =(Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveData(view);
-                //passUserName(view);
+
             }
         });
+
+
     }
 
     //Databases
@@ -241,11 +247,21 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         try {
-             date = format.parse(btnBirthDate.getText().toString());
-            System.out.println(date);
+            Log.i("btnGetDate", btnBirthDate.getText().toString());
+            if(btnBirthDate.getText().toString().contains("CHOOSE BIRTH DATE")){
+                date = null;
+            }else{
+                date = format.parse(btnBirthDate.getText().toString());
+                //   System.out.println(date);
+                System.out.println("Testof date "+ date);
+            }
+
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        Log.i("testVAlueDate", String.valueOf(date));
+
 
          userModel = new UserModel(eTName.getText().toString(), eTUserName.getText().toString(), eTPassword.getText().toString()
         ,Integer.parseInt(etAge.getText().toString()), date,countrySelected, gender,
@@ -257,12 +273,14 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         realmBackupRestore.backup();
         Intent intent = new Intent(Login.this
                 , Welcome.class);
-        intent.putExtra("KEY_USER", eTUserName.getText().toString()); //passing username data to welcome page
         startActivity(intent);
     }
 
 
+/*    public void getUserName(){
 
+
+    }*/
 
 
 

@@ -93,7 +93,7 @@ public class Welcome extends ListActivity {
       //  Log.i("passUserName", mUserName);
 
 
-
+        removeRealmData();
 
     }
 

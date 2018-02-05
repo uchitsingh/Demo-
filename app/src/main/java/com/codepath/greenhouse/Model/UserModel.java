@@ -1,7 +1,5 @@
 package com.codepath.greenhouse.Model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.util.Date;
 
@@ -11,7 +9,7 @@ import io.realm.RealmObject;
  * Created by uchit on 04/02/2018.
  */
 
-public class UserModel extends RealmObject implements Parcelable {
+public class UserModel extends RealmObject  {
 
     public String mName;
     public String mUserName;
@@ -39,27 +37,8 @@ public class UserModel extends RealmObject implements Parcelable {
     }
 
 
-    protected UserModel(Parcel in) {
-        mName = in.readString();
-        mUserName = in.readString();
-        mUPassword = in.readString();
-        Age = in.readInt();
-        mCountry = in.readString();
-        mGender = in.readString();
-        mPostcode = in.readString();
-    }
 
-    public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
-        @Override
-        public UserModel createFromParcel(Parcel in) {
-            return new UserModel(in);
-        }
 
-        @Override
-        public UserModel[] newArray(int size) {
-            return new UserModel[size];
-        }
-    };
 
     public String getmName() {
         return mName;
@@ -126,21 +105,4 @@ public class UserModel extends RealmObject implements Parcelable {
     }
 
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
-        parcel.writeString(mName);
-        parcel.writeString(mUserName);
-        parcel.writeString(mUPassword);
-        parcel.writeInt(Age);
-        parcel.writeString(mCountry);
-        parcel.writeString(mGender);
-        parcel.writeString(mPostcode);
-    }
 }
