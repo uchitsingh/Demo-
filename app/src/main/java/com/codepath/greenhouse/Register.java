@@ -1,9 +1,9 @@
 package com.codepath.greenhouse;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ScrollView;
 
 public class Register extends AppCompatActivity {
 
@@ -16,7 +16,12 @@ public class Register extends AppCompatActivity {
     }
 
     //Also an example of Explict Intent, because we are still in same application, switching from Activity B to Activity A
+    public void welcomePage(View View){
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
 
+
+    }
     public void goBack(View view){
         moveTaskToBack(true);
     }

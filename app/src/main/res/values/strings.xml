@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GreenHouse</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="radio_notSpecified">Not Specified</string>
+    <string name="btn_display">Display</string>
+
 </resources>
