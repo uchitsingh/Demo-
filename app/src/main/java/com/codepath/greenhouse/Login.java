@@ -27,6 +27,7 @@ import com.codetroopers.betterpickers.datepicker.DatePickerDialogFragment;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,12 +65,15 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
    private String countrySelected;
 
    private UserModel userModel;
-
+   // private
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
         calenderDatePicker();//datepicker
         userImageView = (ImageView) findViewById(R.id.userImageView); //camera intent , set with onclick at layout.xml
         //radiobutton gender
@@ -80,12 +84,14 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         init();
         initRealm();
 
-        String mUserName = getIntent().getExtras().getString("KEY_USER");
-
+    /*    String mUserName = getIntent().getExtras().getString("KEY_USER");
+        eTUserName.setText(mUserName);*/
  //       String mUserName = getIntent().getParcelableExtra("KEY_USER");
 //        Log.i("mUserName", mUserName);
-        eTUserName.setText(mUserName);
+
        // getUserName();
+
+        dummyValues();
         realmBackupRestore = new RealmBackupRestore(this);
     }
 
@@ -222,8 +228,6 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         postCodeEditText= (EditText) findViewById(R.id.postCodeEditText);
         //genderTextView = (TextView) findViewById(R.id.genderTextView);
 
-
-
         saveButton =(Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,40 +246,47 @@ public class Login extends AppCompatActivity implements DatePickerDialogFragment
         realmHelper = new RealmHelper(realm);
     }
 
-    public void saveData(View view){
-
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    public void saveData(View view)  {
+        /*
+        1.Get the strindDate from editText
+        2.change it to Dateformat
+        3.pass it to userModel
+        * */
+        String sDate = btnBirthDate.getText().toString();
+        DateFormat  dateFormat = new SimpleDateFormat("dd-MM-yyyy"); ;
+        Log.i("btnGetDate", btnBirthDate.getText().toString());
+       // Date date = new Date(); //if null, the values reflect null, else initialized it shows todays
         Date date = new Date();
         try {
-            Log.i("btnGetDate", btnBirthDate.getText().toString());
-            if(btnBirthDate.getText().toString().contains("CHOOSE BIRTH DATE")){
-                date = null;
-            }else{
-                date = format.parse(btnBirthDate.getText().toString());
-                //   System.out.println(date);
-                System.out.println("Testof date "+ date);
-            }
-
-
+            date = dateFormat.parse(sDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Log.i("testVAlueDate", String.valueOf(date));
+        Log.i("testVAlueDate", date.toString());
 
+        userModel = new UserModel(eTName.getText().toString(), eTUserName.getText().toString(), eTPassword.getText().toString()
+                ,Integer.parseInt(etAge.getText().toString()), date,countrySelected, gender,
+                postCodeEditText.getText().toString());
 
-         userModel = new UserModel(eTName.getText().toString(), eTUserName.getText().toString(), eTPassword.getText().toString()
-        ,Integer.parseInt(etAge.getText().toString()), date,countrySelected, gender,
-                postCodeEditText.getText().toString()
-        );
 
 
         realmHelper.saveUser(userModel);
         realmBackupRestore.backup();
+
         Intent intent = new Intent(Login.this
                 , Welcome.class);
         startActivity(intent);
     }
 
+
+    public void dummyValues(){
+        eTName.setText("hi");
+       eTUserName.setText("test");
+        eTPassword.setText("random");
+        etAge.setText("18");
+        postCodeEditText.setText("Ub5");
+
+    }
 
 /*    public void getUserName(){
 

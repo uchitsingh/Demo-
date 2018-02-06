@@ -52,12 +52,12 @@ public class Welcome extends ListActivity {
             //   String uPassword = userModelArrayList.get(i).getmUPassword();
             String age = String.valueOf(userModelArrayList.get(i).getAge());
 
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             String sDate = null;
             Date date = new Date();
             try {
-                 date = userModelArrayList.get(i).getmDate();
-                sDate = format.format(date);
+                date = userModelArrayList.get(i).getmDate();
+                sDate = dateFormat.format(date);
             } catch (Exception e) {
                 e.printStackTrace();
             }

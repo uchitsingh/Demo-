@@ -13,7 +13,7 @@ import io.realm.RealmResults;
 
 public class RealmHelper {
 
-    Realm realm;
+    private Realm realm;
 
     public RealmHelper(Realm realm) {
         this.realm = realm;
